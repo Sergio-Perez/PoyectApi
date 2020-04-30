@@ -1,11 +1,12 @@
 import json
 from pymongo import MongoClient
 import random
-from src.config import DBURL
+from src.config import *
 # Abro mongodb
-client = MongoClient(f"mongodb://localhost/{DBURL}")
+print(f"Conectando a MongoDb")
+client = MongoClient({DBURL})
 # Cargo archivo de conversaciones
-with open("/home/sergio/proyectoApi/json/quotes-100-en.json","r") as archivo:
+with open(archivoDescarga,"r") as archivo:
     data =json.load(archivo)
 
 # Separo en dos variables  dos listas con autores y frases
