@@ -13,13 +13,13 @@ db = client.get_default_database()
 # Creamos una ruta en la Api para buscar por chats.
 @app.route("/chat/<name>")
 @errorHandler
-@params
+#@params
 def getChat(name):
     
     chatname = re.compile(f"^{name}", re.IGNORECASE)
     chat = list(db.Project_Api.find({"Chat": chatname},{"_id":0, "Name":1, "Frase":1, "Date":1}))
     print(chatname)
-    if not name:
+    if not chatname:
         print("ERROR")
         raise Error404("Chat not found")
     
