@@ -37,7 +37,7 @@ def crearChat(chat):
     chat_id = x.inserted_id
     return dumps([chat_id,{"Chat": chat}])
 
-# Aqui añadimos un usuario a un chat
+# Aqui creamos un usuario a un chat
 @app.route("/chat/<chat>/name/<name>")
 @errorHandler
 
@@ -61,12 +61,12 @@ def anadirUsChat(chat,name_id):
         raise APIError(f"El usuario {name_id} ya esta en ese chat")
     
     query2 = list(db.find({"Name": name_id},{"__id": 0}))    
-    if not query:
+    if not query2:
         creando(name_id) 
 
     x = db.update({"Name": name_id},{"$set":{"Chat":chat}})
-    print(chat)
-    return dumps([{"Chat" :chat}])
+    
+    return dumps([{"Chat" :chat},])
 
 # Añadimos una frase a un usuario
 @app.route("/anadir/<chat>/<name>/<frase>")
@@ -81,6 +81,3 @@ def anadirFrases(chat,name,frase):
     x = db.update({"Name": name},{"$push":{"Frase":{"$each":[frase]}}})
     print(frase)
     return dumps([{"Name":name,"Frase" :frase}])
-
-
-

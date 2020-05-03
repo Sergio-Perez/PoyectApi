@@ -50,7 +50,7 @@ def AnalizarFrase(chat):
    
     return sia.polarity_scores(z)    
 
-# Analizamos todas las frases de todos los chats
+# Analizamos y decimos a que otros usuarios somos más afines
 
 @app.route("/Analizar/<name>/comunes")
 @errorHandler
