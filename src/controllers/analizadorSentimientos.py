@@ -54,16 +54,21 @@ def AnalizarFrase(chat):
 
 @app.route("/Analizar/<name>/comunes")
 @errorHandler
-def AnalizarmasComunes(name):
-    query = list (db.Project_Api.distinct("Name"))
-    contenedor = []
-    print("hola")
-    if  name not in query:
-        raise APIError(f"No existe el usuario {name}, pruebe con alguno de estos {query}") 
-    for e in query:
-        query = list(db.Project_Api.find({"Name": e },{"_id":0, "Frase":1}))
-        analizamos = sia.polarity_scores(str(query).strip('[]'))
-        contenedor.append({"Name": e, "neg": analizamos['neg'],  "neu": analizamos['neu'], "pos": analizamos['pos']})
-        distancia = pd.DataFrame.from_dict(contenedor).set_index('Name').T 
-        similar = distancia[name].sort_values(ascending=False)[1:5].index
-        return {f"The users that have more in commun with {name} are ": dumps(similar)}
+
+def AnalizarmasComunes(name):   
+    query= (db.Project_Api.distinct("Name"))
+    if name in query:
+        query2 = list(db.Project_Api.distinct("Name"))
+        lista = []
+        for e in query2:
+            query3 = list(db.Project_Api.find({"Name": e },{"_id":0, "Frase":1}))
+            analizamos = sia.polarity_scores(str(query3).strip('[]'))
+            lista.append({"Name": e, "neg": analizamos['neg'],  "neu": analizamos['neu'], "pos": analizamos['pos']})
+        
+        df = pd.DataFrame.from_dict(lista).set_index('Name').T
+        distancia = pd.DataFrame(1/(1+ squareform(pdist(df.T, 'euclidean'))), index=df.columns, columns=df.columns)
+        
+        similar = distancia[name].sort_values(ascending=False)[1:4].index
+        return ({f"Los usuarios que tiene en comun  {name} son": dumps(similar)})
+    else:
+        raise APIError(f"No existe el usuario {name}, pruebe con alguno de estos {query}")

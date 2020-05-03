@@ -16,10 +16,10 @@ db = client.get_default_database()
 
 
 
-@app.route("/generarElementos")
+@app.route("/generarElemeantos")
 # Cargo archivo de conversaciones
 def cargando() :  
-    with open("./Output/quotes-100-en.json","r") as archivo:
+    with open("./quotes-100-en.json","r") as archivo:
         data =json.load(archivo)
 
 # Separo en dos variables  dos listas con autores y frases
