@@ -5,7 +5,7 @@ from bson.json_util import dumps
 import time
 from src.helpers.errorHandler import *
 from src.controllers.params import *
-from bson.objectid import ObjectId
+
 
 # Me conecto a MongoDb
 client = MongoClient(DBURL)
