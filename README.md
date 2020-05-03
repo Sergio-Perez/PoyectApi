@@ -12,7 +12,8 @@ personas con sus frases, y analizar los sentimientos de esas frases con módulo 
 
 ### Creo la carpeta SRC
   En la carpeta src creo varios archivos en los cuales reparto las funciones de mi api. Dentro dede esta carpeta genero dos carpetas helpers y controllers.
-      - Helpers --> Controla los errores de la Api.
+
+      - Helpers --> Controla los errores de la Api.      
       - Controllers --> Genera los controles de la Api
   
 
