@@ -1,7 +1,10 @@
 # Proyect Api
 ## Descripción:
 ![Image APi](imagenes/Api.jpeg)
-En este projecto tenemos que vrear una api y con Mongodb crear una base de datos de 
+
+
+
+En este projecto tenemos que crear una api,con módulo flask y con Mongodb crear una base de datos de 
 personas con sus frases, y analizar los sentimientos de esas frases con módulo nltk.
 
 ### Empiezo creando una  base de datos con un json.
