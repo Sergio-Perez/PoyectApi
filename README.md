@@ -4,43 +4,43 @@
 
 
 
-En este projecto tenemos que crear una api,con módulo flask y con Mongodb crear una base de datos de 
-personas con sus frases, y analizar los sentimientos de esas frases con módulo nltk.
+En este projecto tenemos que crear una API. Con módulo flask y con MongoDB creamos una base de datos de 
+personas con sus frases, que poodemos actualizar, y analizamos los sentimientos de esas frases con el módulo nltk.
 
 ### Empiezo creando una  base de datos con un json.
-   Saco los datos del archivo “quotes-100-en.json” y lo añado aleatoriamente los nombres y las frases a las cuales les añado la hora de creación.
+   Saco los datos del archivo “quotes-100-en.json” y añado aleatoriamente los nombres y las frases.
 
 ### Creo la carpeta SRC
-  En la carpeta src creo varios archivos en los cuales reparto las funciones de mi api. Dentro dede esta carpeta genero dos carpetas helpers y controllers.
+  En la carpeta src creo varios archivos en los cuales reparto las funciones de mi API. Dentro de esta carpeta genero dos carpetas:
 
-      - Helpers --> Controla los errores de la Api.      
-      - Controllers --> Genera los controles de la Api
+      - Helpers --> Controla los errores de la API.      
+      - Controllers --> Genera los controles de la API.
   
 
 #### Controllers:
       - Dentro de la carpeta encontamos varios ficheros:
-          - Analizador de sentimientos : 
-              - Se encuentra el codigo donde analizamos los sentimientos de las frases:
+          - Analizador de sentimientos: 
+              - Se encuentra el código donde analizamos los sentimientos de las frases:
                   - /Analizar/<name>/lista   --> Analiza todas las frases de un usuario.
-                  - /Analizar/<name>/comunes --> Analizamos y decimos a que otros usuarios somos más afines.
+                  - /Analizar/<name>/comunes --> Analizamos y decimos a qué otros usuarios somos más afines.
                   - /Analizar/<chat>         --> Analiza todas las frases de un chat.
                     
           - Base de datos:
-             Muestreo de la base de datos.
-                 - /chat/<name> --> Creamos una ruta en la Api para buscar por chats.
-                 - /<name>      --> Creamos una ruta en la Api para buscar los nombres
+             Muestreo de la base de datos:
+                 - /chat/<name> --> Creamos una ruta en la API para buscar por chat.
+                 - /<name>      --> Creamos una ruta en la API para buscar por nombre.
                     
           - Nuevo Usuarios:
-              - Añadimos usuarios, chats y sus frases.
+              - Añadimos usuarios, chats y sus frases:
                   - /create --> Desde esta url podemos crear el usuario, su chat y su frase con parametros.
                    ejemplo:"http://localhost:xxxx/create?name=Sergio&chat=Ironhack&frase=I%20love%20my%20live"
                   - /create/chat/<chat>           --> Creamos un chat.                  
-                  - /chat/<chat>/name/<name>      --> Creamos un usario y un chat. 
+                  - /chat/<chat>/name/<name>      --> Creamos un usuario y un chat. 
                   - /anadir/<chat>/<name_id>      --> Añadimos al usuario en un chat.
                   - /anadir/<chat>/<name>/<frase> --> Añadimos una frase a un usuario.
         
           - Parms:
-              - Aqui genero una función para poder añaaidr parametros.
+              - Aquí genero una función para poder añadir parametros.
           
           - Reportes:
               - /chat/<chat>/lista --> Devolvemos todos los mensajes de un chat.
@@ -49,4 +49,4 @@ personas con sus frases, y analizar los sentimientos de esas frases con módulo 
               - La configuración de mi base de datos y mi conexión.
               
                      
-#### El resto de los archivos ponen en marcha la Api y el servidor.
+#### El resto de los archivos ponen en marcha la API y el servidor.
